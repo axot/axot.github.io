@@ -1,0 +1,15 @@
+---
+layout: gfw_report
+status: publish
+published: true
+wordpress_id: 48
+wordpress_url: http://www.axot.org/?gfw_report=48
+date: !binary |-
+  MjAxNC0wMi0yNyAwMToyNToyMCArMDkwMA==
+date_gmt: !binary |-
+  MjAxNC0wMi0yNiAxNjoyNToyMCArMDkwMA==
+categories: []
+tags: []
+comments: []
+---
+

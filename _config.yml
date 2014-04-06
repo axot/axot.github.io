@@ -102,3 +102,6 @@ facebook_like: false
 # Gravatar
 gravatar_email: im.axot@gmail.com
 gravatar_header: true
+
+# Force SSL
+enforce_ssl: axot.github.io
