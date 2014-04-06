@@ -1,12 +1,76 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>
+            https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t/
+        </loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2011/06/27/about/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2011/06/27/11/</loc>
+        <lastmod>2014-03-24T17:25:29+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2011/06/27/12/</loc>
+        <lastmod>2014-03-24T17:25:29+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2011/12/05/can-you-crack-it-solution/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2011/12/05/25/</loc>
+        <lastmod>2014-03-24T17:25:29+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2012/02/10/cydia-repo/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3/
+        </loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2012/05/01/39/</loc>
+        <lastmod>2014-03-24T17:25:29+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2012/05/01/home/</loc>
+        <lastmod>2014-03-24T17:25:29+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2013/11/09/welcome-to-jekyll/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2013/12/04/Samples/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2013/12/09/What-is-this-anyway/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/2014/02/27/48/</loc>
+        <lastmod>2014-03-24T17:25:29+09:00</lastmod>
+    </url>
+    <url>
         <loc>https://axot.github.io/blog/archives/</loc>
-        <lastmod>2014-04-06T17:27:41+09:00</lastmod>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
+    </url>
+    <url>
+        <loc>https://axot.github.io/blog/</loc>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
     </url>
     <url>
         <loc>https://axot.github.io/</loc>
-        <lastmod>2014-04-06T17:27:41+09:00</lastmod>
+        <lastmod>2014-04-06T17:42:37+09:00</lastmod>
     </url>
     <url>
         <loc>https://axot.github.io/robots.txt</loc>

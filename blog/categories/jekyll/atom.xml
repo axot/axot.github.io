@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: jekyll | axot github page]]></title>
+  <link href="https://axot.github.io/blog/categories/jekyll/atom.xml" rel="self"/>
+  <link href="https://axot.github.io/"/>
+  <updated>2014-04-06T18:00:19+09:00</updated>
+  <id>https://axot.github.io/</id>
+  <author>
+    <name><![CDATA[axot]]></name>
+    <email><![CDATA[axot[at]msn.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What is this, anyway?]]></title>
+    <link href="https://axot.github.io/blog/2013/12/09/What-is-this-anyway/"/>
+    <updated>2013-12-09T04:55:16+09:00</updated>
+    <id>https://axot.github.io/blog/2013/12/09/What-is-this-anyway</id>
+    <content type="html"><![CDATA[<p>Herring Cove is a clean and responsive theme for Jekyll.</p>
+
+<h3>Overview</h3>
+
+<ul>
+<li>Fixed Sidebar with social links</li>
+<li>Minimal design</li>
+<li>Comments by Disqus</li>
+<li>Social Sharing abilities</li>
+<li>Easy to configure</li>
+<li>Based on Bootstrap</li>
+</ul>
+
+
+<h3>Screenshots</h3>
+
+<p><img src="/images/screenshot1.png" alt="screenshot" />
+<img src="/images/screenshot2.png" alt="screenshot" /></p>
+
+<h3>Setup</h3>
+
+<ol>
+<li>Install Jekyll</li>
+<li>Fork or <a href="https://github.com/arnp/herring-cove/archive/master.zip">download</a> this theme repo</li>
+<li>Edit the <code>_config.yml</code> file</li>
+</ol>
+
+
+<p>You can change the showcase image by replacing <code>showcase.jpg</code> file in the <code>images</code> folder. I&rsquo;ll try to find a better way to do this soon.</p>
+
+<h3>Download</h3>
+
+<p><a href="https://github.com/arnp/herring-cove/archive/master.zip">download</a></p>
+
+<h3>License</h3>
+
+<ul>
+<li><a href="http://opensource.org/licenses/MIT">MIT</a></li>
+</ul>
+
+
+<hr />
+
+<p>Herring Cove is always a work in progress and as such, I hope to clean up the code and add features as time permits. Feel free to add your own additions.</p>
+
+<p><em>What&rsquo;s with the name?</em></p>
+
+<p><a href="http://www.capecodbeachchair.com/beachguide/index.cfm?page=3&amp;BeachID=5">Herring Cove</a> is a beach on Cape Cod in Provincetown, Massachusetts. If you&rsquo;re in the area, be sure to check it out!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Welcome to Jekyll!]]></title>
+    <link href="https://axot.github.io/blog/2013/11/09/welcome-to-jekyll/"/>
+    <updated>2013-11-09T04:55:16+09:00</updated>
+    <id>https://axot.github.io/blog/2013/11/09/welcome-to-jekyll</id>
+    <content type="html"><![CDATA[<p>You&rsquo;ll find this post in your <code>_posts</code> directory &ndash; edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
+To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<p><div>
+  <pre><code class='ruby'>def print_hi(name)
+  puts &amp;ldquo;Hi, #{name}&amp;rdquo;
+end
+print_hi(&amp;lsquo;Tom&amp;rsquo;)&lt;/p&gt;
+
+&lt;h1&gt;=&gt; prints &amp;lsquo;Hi, Tom&amp;rsquo; to STDOUT.&lt;/h1&gt;
+
+&lt;p&gt;</code></pre>
+</div>
+</p>
+
+<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/mojombo/jekyll">Jekyll&rsquo;s GitHub repo</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

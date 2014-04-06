@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  
+  <!--
+    redirect users to the https version of the website.
+    but: only check when on the production domain, as set in _config.yml.
+   -->
+  <script type="text/javascript">
+    var enforce = "axot.github.io";
+    if ((enforce == window.location.host) && (window.location.protocol != "https:"))
+      window.location = window.location.toString().replace(/^http:/, "https:");
+  </script>
+  
+  <meta charset="utf-8">
+  <title>How to pass through new state packets[NetGear WNR854T]  - axot github page</title>
+  <meta name="author" content="axot">
+
+  
+  <meta name="description" content="Sometimes you may want add a static routing for accessing another network.
+When you done the static routing table, you found the ip routing was &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="axot github page" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<aside class="left">
+			<div class="inner-left">
+				<header>
+					
+  <img src="http://www.gravatar.com/avatar/377601481ee13583436af45bab0af0d0?s=200" alt="Gravatar of axot " title="Gravatar of axot" class="profilepic" />
+
+<hgroup>
+  <h1><a href="/">axot github page</a></h1>
+  
+    <h2 class="subtitle">A blogging RCE for hackers.</h2>
+   
+</hgroup>
+
+
+				</header>
+				<footer>
+					<p>
+	
+		<a href="http://github.com/axot" class="btn btn-dark">GitHub</a>
+	
+	
+		<a href="http://twitter.com/axot" class="btn btn-dark">Twitter</a>
+	
+</p>
+				</footer>
+			</div>
+		</aside>
+    	<section class="right">
+    		<div class="inner-right">
+    			<div id="posts">
+    			  	<article class="post">
+    
+  <header>
+    
+      <h1 class="entry-title">How to Pass Through New State packets[NetGear WNR854T]</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-27T17:27:35+09:00" pubdate data-updated="true">Jun 27<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Sometimes you may want add a static routing for accessing another network.<br />
+When you done the static routing table, you found the ip routing was working fine, but the connection can&#8217;t be established. The problem caused by firewall rule.</p>
+
+
+<p><a id="more"></a><a id="more-6"></a></p>
+
+
+<hr/>
+
+
+<h1>update1: I made a new firmware based on 1.4.38, the iptables rule will load automatically. @2012.01.12<br /></h1>
+
+<p><a href='http://www.axot.org/wp-content/uploads/2011/06/WNR854T_axot.img_.zip'>WNR854T custom firmware</a></p></p>
+
+<hr/>
+
+
+<p>Here I want show you how to fix the problem in the case of NetGear WNR854T.</p>
+
+
+<p>go to: http://www.routerlogin.net/cmd.htm<br />
+then run: &#8216;iptables -L -n &#8211;line-numbers&#8217; for the print whole iptables rules.</p>
+
+
+<p>the result(possible):</p>
+
+
+<p>[code lang=&#8221;bash&#8221;]<br />
+Chain INPUT (policy ACCEPT)<br />
+num  target     prot opt source               destination<br />
+1    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520<br />
+2    ACCEPT     tcp  &#8211;  192.168.0.96/27      0.0.0.0/0          tcp dpt:81<br />
+3    ACCEPT     icmp &#8211;  0.0.0.0/0            192.168.0.93       icmp type 8<br />
+4    ACCEPT     all  &#8211;  192.168.0.96/27      0.0.0.0/0<br />
+5    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
+6    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:520<br />
+7    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:68<br />
+8    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID</p>
+
+
+<p>Chain FORWARD (policy ACCEPT)<br />
+num  target     prot opt source               destination<br />
+1    PORT_FW    all  &#8211;  0.0.0.0/0            0.0.0.0/0<br />
+2    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
+3    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID</p>
+
+
+<p>Chain OUTPUT (policy ACCEPT)<br />
+num  target     prot opt source               destination</p>
+
+
+<p>Chain PORT_FW (1 references)<br />
+num  target     prot opt source               destination<br />
+&#8230;<br />
+[/code]</p>
+
+
+<p>In index 8 of Chain INPUT and index 3 of Chain FORWARD, New state will be dropped by.<br />
+So, we need modify these rules</p>
+
+
+<p>like:</p>
+
+
+<p>[code lang=&#8221;bash&#8221;]<br />
+iptables -R INPUT 8 -i eth0 -m state &#8211;state INVALID -j DROP<br />
+iptables -R FORWARD 3 -i eth0 -m state &#8211;state INVALID -j DROP<br />
+iptables -A INPUT -i eth0 -m state &#8211;state NEW -j ACCEPT<br />
+iptables -A FORWARD -i eth0 -m state &#8211;state NEW -j ACCEPT<br />
+[/code]</p>
+
+
+<p>Change the number(8, 3) in your case.</p>
+
+
+<p>the new rule table like this:</p>
+
+
+<p>[code lang=&#8221;bash&#8221;]<br />
+Chain INPUT (policy ACCEPT)<br />
+num  target     prot opt source               destination<br />
+1    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520<br />
+2    ACCEPT     tcp  &#8211;  192.168.0.96/27      0.0.0.0/0          tcp dpt:81<br />
+3    ACCEPT     icmp &#8211;  0.0.0.0/0            192.168.0.93       icmp type 8<br />
+4    ACCEPT     all  &#8211;  192.168.0.96/27      0.0.0.0/0<br />
+5    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
+6    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:520<br />
+7    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:68<br />
+8    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state INVALID<br />
+9    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW</p>
+
+
+<p>Chain FORWARD (policy ACCEPT)<br />
+num  target     prot opt source               destination<br />
+1    PORT_FW    all  &#8211;  0.0.0.0/0            0.0.0.0/0<br />
+2    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
+3    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state INVALID<br />
+4    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW</p>
+
+
+<p>Chain OUTPUT (policy ACCEPT)<br />
+num  target     prot opt source               destination</p>
+
+
+<p>Chain PORT_FW (1 references)<br />
+num  target     prot opt source               destination<br />
+&#8230;<br />
+[/code]</p>
+
+
+<p>now, test the connection via ping or anything you like. :-)</p>
+
+
+<p>Special thanks to Masaki わふー.</p>
+
+</div>
+
+
+</article>
+
+
+        <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t/" data-via="axot" data-counturl="https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+
+
+
+
+    			</div>
+    			<footer id="footer">
+    				<p class="credit">
+  Copyright &copy; 2014 - axot. Powered by <a href="http://octopress.org">Octopress</a>
+</p>
+
+
+    			</footer>
+    			
+
+<script type="text/javascript">
+      var disqus_shortname = 'axot';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+
+    		</div>
+    	</section>
+  	</div>
+</body>
+</html>
