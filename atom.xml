@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[axot github page]]></title>
+  <link href="https://axot.github.io/atom.xml" rel="self"/>
+  <link href="https://axot.github.io/"/>
+  <updated>2014-04-06T17:27:55+09:00</updated>
+  <id>https://axot.github.io/</id>
+  <author>
+    <name><![CDATA[axot]]></name>
+    <email><![CDATA[axot[at]msn.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
