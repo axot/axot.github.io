@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | axot github page]]></title>
   <link href="https://axot.github.io/blog/categories/misc/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:39:01+09:00</updated>
+  <updated>2014-05-20T01:40:28+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -64,7 +64,7 @@ rvm use 1.9.3</p>
 
 <p>```</p>
 
-<p>Downloads: (ruby1.9.x_patch)[<a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a>]</p>
+<p>Downloads: <a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">ruby1.9.x_patch</a></p>
 ]]></content>
   </entry>
   
