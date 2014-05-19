@@ -103,12 +103,12 @@ It seems only happend when you use RVM to manage &hellip;">
   </header>
 
 
-<div class="entry-content"><p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a _rb_Digest_MD5_Finish error.
+<div class="entry-content"><p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a <code>_rb_Digest_MD5_Finish</code> error.
 It seems only happend when you use RVM to manage rubies.</p>
 
-<p>The Makefile in each subdirectory of $HOME/.rvm/src/ruby-1.9.*/ext/digest need be patched.
+<p>The Makefile in each subdirectory of <code>$HOME/.rvm/src/ruby-1.9.*/ext/digest</code> need be patched.
 I don&rsquo;t know how to use RVM to install a custom Ruby version, so I made a simple shell script to do that.
-ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):</p>
+<code>ruby1.9.x_patch.sh</code>(test passed on OSX 10.7.3 x86_64 version):</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -174,8 +174,7 @@ ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Downloads:
-ruby1.9.x_patch</p>
+<p>Downloads: (ruby1.9.x_patch)[<a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a>]</p>
 </div>
 
 

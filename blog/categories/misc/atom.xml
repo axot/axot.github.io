@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | axot github page]]></title>
   <link href="https://axot.github.io/blog/categories/misc/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:37:07+09:00</updated>
+  <updated>2014-05-20T01:39:01+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -18,12 +18,12 @@
     <link href="https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3/"/>
     <updated>2012-05-01T03:50:50+09:00</updated>
     <id>https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3</id>
-    <content type="html"><![CDATA[<p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a _rb_Digest_MD5_Finish error.
+    <content type="html"><![CDATA[<p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a <code>_rb_Digest_MD5_Finish</code> error.
 It seems only happend when you use RVM to manage rubies.</p>
 
-<p>The Makefile in each subdirectory of $HOME/.rvm/src/ruby-1.9.*/ext/digest need be patched.
+<p>The Makefile in each subdirectory of <code>$HOME/.rvm/src/ruby-1.9.*/ext/digest</code> need be patched.
 I don&rsquo;t know how to use RVM to install a custom Ruby version, so I made a simple shell script to do that.
-ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):
+<code>ruby1.9.x_patch.sh</code>(test passed on OSX 10.7.3 x86_64 version):
 ``` bash</p>
 
 <h1>!/bin/sh</h1>
@@ -64,8 +64,7 @@ rvm use 1.9.3</p>
 
 <p>```</p>
 
-<p>Downloads:
-ruby1.9.x_patch</p>
+<p>Downloads: (ruby1.9.x_patch)[<a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a>]</p>
 ]]></content>
   </entry>
   
