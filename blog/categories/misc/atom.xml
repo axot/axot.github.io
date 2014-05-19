@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | axot github page]]></title>
   <link href="https://axot.github.io/blog/categories/misc/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:20:38+09:00</updated>
+  <updated>2014-05-20T01:32:16+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -26,7 +26,7 @@ I don't know how to use RVM to install a custom Ruby version, so I made a simple
 
 
 <p>ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):<br />
-[code lang="bash"]<br />
+``` bash
 #!/bin/sh</p>
 
 
@@ -54,28 +54,29 @@ make clean<br />
 make</p>
 
 
-<p>echo Patching...<br />
-cp ../../../.ext/x86_64-darwin*/digest/*.bundle ../../../../../rubies/ruby-1.9.*/lib/ruby/1.9.*/x86_64-darwin*/digest/<br />
+<p><p>echo Patching&hellip;<br />
+cp ../../../.ext/x86_64-darwin<em>/digest/</em>.bundle ../../../../../rubies/ruby-1.9.<em>/lib/ruby/1.9.</em>/x86_64-darwin*/digest/<br />
 echo Done<br />
-[/code]</p>
+```</p>
 
-
-<p>Usage example:<br />
-[code lang="bash"]<br />
+<p><p>Usage example:<br />
+``` bash
 rvm cleanup all<br />
 rvm reinstall 1.9.3<br />
 rvm reload<br />
-curl -L http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh | sh<br />
-rvm use 1.9.3<br />
-# test something whatever u want to<br />
-# for metasploit:<br />
-# msfrpcd -P password -U username<br />
-[/code]</p>
+curl -L <a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a> | sh<br />
+rvm use 1.9.3<br /></p>
 
+<h1>test something whatever u want to<br /></h1>
 
-<p>Downloads:<br />
-<a href='http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh'>ruby1.9.x_patch</a></p>
+<h1>for metasploit:<br /></h1>
 
+<h1>msfrpcd -P password -U username<br /></h1>
+
+<p>```</p>
+
+<p><p>Downloads:<br />
+<a href='http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh'>ruby1.9.x_patch</a></p></p>
 ]]></content>
   </entry>
   
