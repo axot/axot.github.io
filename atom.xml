@@ -4,7 +4,7 @@
   <title><![CDATA[axot github page]]></title>
   <link href="https://axot.github.io/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-04-06T18:00:47+09:00</updated>
+  <updated>2014-05-20T01:15:35+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -14,178 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[48]]></title>
-    <link href="https://axot.github.io/blog/2014/02/27/48/"/>
-    <updated>2014-02-27T01:25:20+09:00</updated>
-    <id>https://axot.github.io/blog/2014/02/27/48</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What is this, anyway?]]></title>
-    <link href="https://axot.github.io/blog/2013/12/09/What-is-this-anyway/"/>
-    <updated>2013-12-09T04:55:16+09:00</updated>
-    <id>https://axot.github.io/blog/2013/12/09/What-is-this-anyway</id>
-    <content type="html"><![CDATA[<p>Herring Cove is a clean and responsive theme for Jekyll.</p>
-
-<h3>Overview</h3>
-
-<ul>
-<li>Fixed Sidebar with social links</li>
-<li>Minimal design</li>
-<li>Comments by Disqus</li>
-<li>Social Sharing abilities</li>
-<li>Easy to configure</li>
-<li>Based on Bootstrap</li>
-</ul>
-
-
-<h3>Screenshots</h3>
-
-<p><img src="https://axot.github.io/images/screenshot1.png" alt="screenshot" />
-<img src="https://axot.github.io/images/screenshot2.png" alt="screenshot" /></p>
-
-<h3>Setup</h3>
-
-<ol>
-<li>Install Jekyll</li>
-<li>Fork or <a href="https://github.com/arnp/herring-cove/archive/master.zip">download</a> this theme repo</li>
-<li>Edit the <code>_config.yml</code> file</li>
-</ol>
-
-
-<p>You can change the showcase image by replacing <code>showcase.jpg</code> file in the <code>images</code> folder. I&rsquo;ll try to find a better way to do this soon.</p>
-
-<h3>Download</h3>
-
-<p><a href="https://github.com/arnp/herring-cove/archive/master.zip">download</a></p>
-
-<h3>License</h3>
-
-<ul>
-<li><a href="http://opensource.org/licenses/MIT">MIT</a></li>
-</ul>
-
-
-<hr />
-
-<p>Herring Cove is always a work in progress and as such, I hope to clean up the code and add features as time permits. Feel free to add your own additions.</p>
-
-<p><em>What&rsquo;s with the name?</em></p>
-
-<p><a href="http://www.capecodbeachchair.com/beachguide/index.cfm?page=3&amp;BeachID=5">Herring Cove</a> is a beach on Cape Cod in Provincetown, Massachusetts. If you&rsquo;re in the area, be sure to check it out!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Samples]]></title>
-    <link href="https://axot.github.io/blog/2013/12/04/Samples/"/>
-    <updated>2013-12-04T00:00:00+09:00</updated>
-    <id>https://axot.github.io/blog/2013/12/04/Samples</id>
-    <content type="html"><![CDATA[<h1>Samples</h1>
-
-<h1>Heading 1</h1>
-
-<h2>Heading 2</h2>
-
-<h3>Heading 3</h3>
-
-<h4>Heading 4</h4>
-
-<h5>Heading 5</h5>
-
-<h6>Heading 6</h6>
-
-<h3>Body text</h3>
-
-<p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Quisque tempus nunc diam, non dignissim risus tincidunt a. Curabitur consequat justo vitae ipsum accumsan tempor. Quisque rhoncus eleifend ante vitae ultricies. Pellentesque suscipit nisl ut metus tincidunt, vulputate sodales dui commodo. Sed eget sapien varius, lacinia lectus nec, tempor dolor. Pellentesque sed mattis magna. Curabitur ut tristique turpis. Morbi sagittis dolor suscipit urna placerat, consectetur venenatis sapien viverra. Mauris vitae felis et sem venenatis cursus.</p>
-
-<p><img src="https://axot.github.io/images/cc.jpg" alt="Image" /></p>
-
-<p>Donec ornare turpis non ullamcorper pulvinar. <em>Integer ut mauris vehicula mauris posuere adipiscing.</em> Phasellus dictum cursus convallis. Sed dapibus laoreet porttitor.</p>
-
-<h3>Blockquotes</h3>
-
-<blockquote><p>Fusce non eleifend nisi. Donec pharetra sed ipsum sit amet sollicitudin. Duis dolor ante, gravida varius neque eget, semper commodo libero. In euismod tempor lobortis. Nulla eget lectus nec enim mattis aliquet a sit amet est.</p></blockquote>
-
-<h2>List Types</h2>
-
-<h3>Lists</h3>
-
-<ol>
-<li>Item One
-
-<ol>
-<li>sub one</li>
-<li>sub two</li>
-<li>sub three</li>
-</ol>
-</li>
-<li><p>Item Two</p></li>
-<li><p>Uno</p></li>
-<li>Dos</li>
-<li>Tres</li>
-</ol>
-
-
-<h2>Code</h2>
-
-<div>
-  <pre><code class='python'>class node:
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next</code></pre>
-</div>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Welcome to Jekyll!]]></title>
-    <link href="https://axot.github.io/blog/2013/11/09/welcome-to-jekyll/"/>
-    <updated>2013-11-09T04:55:16+09:00</updated>
-    <id>https://axot.github.io/blog/2013/11/09/welcome-to-jekyll</id>
-    <content type="html"><![CDATA[<p>You&rsquo;ll find this post in your <code>_posts</code> directory &ndash; edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<div>
-  <pre><code class='ruby'>def print_hi(name)
-  puts &quot;Hi, #{name}&quot;
-end
-print_hi('Tom')
-#=&gt; prints 'Hi, Tom' to STDOUT.</code></pre>
-</div>
-
-
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/mojombo/jekyll">Jekyll&rsquo;s GitHub repo</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Home]]></title>
-    <link href="https://axot.github.io/blog/2012/05/01/home/"/>
-    <updated>2012-05-01T14:32:45+09:00</updated>
-    <id>https://axot.github.io/blog/2012/05/01/home</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[39]]></title>
-    <link href="https://axot.github.io/blog/2012/05/01/39/"/>
-    <updated>2012-05-01T14:32:45+09:00</updated>
-    <id>https://axot.github.io/blog/2012/05/01/39</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to resolve _rb_Digest_MD5_Finish error in Ruby 1.9.x]]></title>
+    <title type="html"><![CDATA[How to Resolve _rb_Digest_MD5_Finish Error in Ruby 1.9.x]]></title>
     <link href="https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3/"/>
     <updated>2012-05-01T03:50:50+09:00</updated>
     <id>https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3</id>
@@ -251,7 +80,7 @@ rvm use 1.9.3<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[My cydia repo]]></title>
+    <title type="html"><![CDATA[My Cydia Repo]]></title>
     <link href="https://axot.github.io/blog/2012/02/10/cydia-repo/"/>
     <updated>2012-02-10T18:08:31+09:00</updated>
     <id>https://axot.github.io/blog/2012/02/10/cydia-repo</id>
@@ -283,16 +112,7 @@ SBSetting defaultのSSH toggleは起動する際にsshdを開くので、その�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[25]]></title>
-    <link href="https://axot.github.io/blog/2011/12/05/25/"/>
-    <updated>2011-12-05T14:45:25+09:00</updated>
-    <id>https://axot.github.io/blog/2011/12/05/25</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Can you crack it solution]]></title>
+    <title type="html"><![CDATA[Can You Crack It Solution]]></title>
     <link href="https://axot.github.io/blog/2011/12/05/can-you-crack-it-solution/"/>
     <updated>2011-12-05T09:22:36+09:00</updated>
     <id>https://axot.github.io/blog/2011/12/05/can-you-crack-it-solution</id>
@@ -2950,69 +2770,7 @@ http://pastebin.com/GAZ2aCLm<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[12]]></title>
-    <link href="https://axot.github.io/blog/2011/06/27/12/"/>
-    <updated>2011-06-27T17:58:10+09:00</updated>
-    <id>https://axot.github.io/blog/2011/06/27/12</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[11]]></title>
-    <link href="https://axot.github.io/blog/2011/06/27/11/"/>
-    <updated>2011-06-27T17:58:10+09:00</updated>
-    <id>https://axot.github.io/blog/2011/06/27/11</id>
-    <content type="html"><![CDATA[<p>Profile name: 邵正(Shao Zheng) nickname: axot(pickup from Maxtor) hometown: Suzhou,China profession: Bioinformatics, Kyushu Institute of Technology Spec. Server NO.1 OS: FreeBSD 8.1-RELEASE i386 CPU: Intel(R) Pentium(R) 4 CPU 2.40GHz Memory: 256 MB HDD: 53.64 GB Server NO.2 OS: FreeBSD 8.1-RELEASE i386 Intel(R) Pentium(R) M processor 1400MHz Memory: 1024 MB HDD: 53.64 GB Contact mail twitter</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[about]]></title>
-    <link href="https://axot.github.io/blog/2011/06/27/about/"/>
-    <updated>2011-06-27T17:50:48+09:00</updated>
-    <id>https://axot.github.io/blog/2011/06/27/about</id>
-    <content type="html"><![CDATA[<h3>Profile</h3>
-
-
-<table style="width:400px;">
-<tr>
-<th style="width:100px;text-align:center">Name</th>
-<td> 邵 正(Zheng SHAO)</td>
-</tr>
-<tr>
-<th style="width:100px;text-align:center">Nickname</th>
-<td> axot (abstract from Maxtor) </td>
-</tr>
-<tr>
-<th style="width:100px;text-align:center">Current City</th>
-<td> Iizuka-shi, Fukuoka, Japan</td>
-</tr>
-<tr>
-<th style="width:100px;text-align:center">Hometown</th>
-<td> Suzhou, China</td>
-</tr>
-<tr>
-<th style="width:100px;text-align:center">Department</th>
-<td> Bioinformatics, Kyushu Institute of Technology</td>
-</tr>
-</table>
-
-
-<h3>Contact</h3>
-
-
-<ul>
-<li><a onclick="javascript:pageTracker._trackPageview('/mailto/axot@msn.com');"  href="mailto:axot@msn.com" target="_blank">mail</a></li>
-<li><a onclick="javascript:pageTracker._trackPageview('/outgoing/www.twitter.com/axot');"  href="http://www.twitter.com/axot" target="_blank">twitter</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to pass through new state packets[NetGear WNR854T] ]]></title>
+    <title type="html"><![CDATA[How to Pass Through New State packets[NetGear WNR854T]]]></title>
     <link href="https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t/"/>
     <updated>2011-06-27T17:27:35+09:00</updated>
     <id>https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t</id>
