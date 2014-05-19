@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Network | axot github page]]></title>
   <link href="https://axot.github.io/blog/categories/network/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:40:28+09:00</updated>
+  <updated>2014-05-20T01:44:56+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -18,121 +18,76 @@
     <link href="https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t/"/>
     <updated>2011-06-27T17:27:35+09:00</updated>
     <id>https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t</id>
-    <content type="html"><![CDATA[<p>Sometimes you may want add a static routing for accessing another network.<br />
-When you done the static routing table, you found the ip routing was working fine, but the connection can't be established. The problem caused by firewall rule.</p>
+    <content type="html"><![CDATA[<p>Sometimes you may want add a static routing for accessing another network.
+When you done the static routing table, you found the ip routing was working fine, but the connection can&rsquo;t be established. The problem caused by firewall rule.</p>
 
+<p>I made a new firmware based on 1.4.38, the iptables rule will load automatically. @2012.01.12
+download: <a href="http://www.axot.org/wp-content/uploads/2011/06/WNR854T_axot.img_.zip">WNR854T custom firmware</a></p>
 
-<p><a id="more"></a><a id="more-6"></a></p>
-
-
-<hr/>
-
-
-<h1>update1: I made a new firmware based on 1.4.38, the iptables rule will load automatically. @2012.01.12<br /></h1>
-
-<p><a href='http://www.axot.org/wp-content/uploads/2011/06/WNR854T_axot.img_.zip'>WNR854T custom firmware</a></p></p>
-
-<hr/>
-
-
-<p>Here I want show you how to fix the problem in the case of NetGear WNR854T.</p>
-
-
-<p>go to: http://www.routerlogin.net/cmd.htm<br />
-then run: 'iptables -L -n --line-numbers' for the print whole iptables rules.</p>
-
-
-<p>the result(possible):</p>
-
-
-<p>[code lang="bash"]<br />
-Chain INPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520<br />
-2    ACCEPT     tcp  --  192.168.0.96/27      0.0.0.0/0          tcp dpt:81<br />
-3    ACCEPT     icmp --  0.0.0.0/0            192.168.0.93       icmp type 8<br />
-4    ACCEPT     all  --  192.168.0.96/27      0.0.0.0/0<br />
-5    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-6    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:520<br />
-7    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:68<br />
-8    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID</p>
-
-
-<p>Chain FORWARD (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    PORT_FW    all  --  0.0.0.0/0            0.0.0.0/0<br />
-2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-3    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID</p>
-
-
-<p>Chain OUTPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination</p>
-
-
-<p>Chain PORT_FW (1 references)<br />
-num  target     prot opt source               destination<br />
-...<br />
-[/code]</p>
-
-
-<p>In index 8 of Chain INPUT and index 3 of Chain FORWARD, New state will be dropped by.<br />
-So, we need modify these rules</p>
-
-
-<p>like:</p>
-
-
-<p>[code lang="bash"]<br />
-iptables -R INPUT 8 -i eth0 -m state --state INVALID -j DROP<br />
-iptables -R FORWARD 3 -i eth0 -m state --state INVALID -j DROP<br />
-iptables -A INPUT -i eth0 -m state --state NEW -j ACCEPT<br />
-iptables -A FORWARD -i eth0 -m state --state NEW -j ACCEPT<br />
-[/code]</p>
-
-
-<p>Change the number(8, 3) in your case.</p>
-
-
-<p>the new rule table like this:</p>
-
-
-<p>[code lang="bash"]<br />
-Chain INPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520<br />
-2    ACCEPT     tcp  --  192.168.0.96/27      0.0.0.0/0          tcp dpt:81<br />
-3    ACCEPT     icmp --  0.0.0.0/0            192.168.0.93       icmp type 8<br />
-4    ACCEPT     all  --  192.168.0.96/27      0.0.0.0/0<br />
-5    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-6    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:520<br />
-7    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:68<br />
-8    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state INVALID<br />
-9    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state NEW</p>
-
-
-<p>Chain FORWARD (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    PORT_FW    all  --  0.0.0.0/0            0.0.0.0/0<br />
-2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-3    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state INVALID<br />
-4    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state NEW</p>
-
-
-<p>Chain OUTPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination</p>
-
-
-<p>Chain PORT_FW (1 references)<br />
-num  target     prot opt source               destination<br />
-...<br />
-[/code]</p>
-
-
-<p>now, test the connection via ping or anything you like. :-)</p>
-
+<p>Here I want show you how to fix the problem in the case of NetGear WNR854T.
+go to: <code>http://www.routerlogin.net/cmd.htm</code>
+then run: <code>iptables -L -n --line-numbers</code> for the print whole iptables rules.
+the result(possible):
+<code>bash
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination
+1    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520
+2    ACCEPT     tcp  --  192.168.0.96/27      0.0.0.0/0          tcp dpt:81
+3    ACCEPT     icmp --  0.0.0.0/0            192.168.0.93       icmp type 8
+4    ACCEPT     all  --  192.168.0.96/27      0.0.0.0/0
+5    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+6    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:520
+7    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:68
+8    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID
+Chain FORWARD (policy ACCEPT)
+num  target     prot opt source               destination
+1    PORT_FW    all  --  0.0.0.0/0            0.0.0.0/0
+2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+3    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination
+Chain PORT_FW (1 references)
+num  target     prot opt source               destination
+...
+</code>
+In index 8 of Chain INPUT and index 3 of Chain FORWARD, New state will be dropped by.
+So, we need modify these rules
+like:
+<code>bash
+iptables -R INPUT 8 -i eth0 -m state --state INVALID -j DROP
+iptables -R FORWARD 3 -i eth0 -m state --state INVALID -j DROP
+iptables -A INPUT -i eth0 -m state --state NEW -j ACCEPT
+iptables -A FORWARD -i eth0 -m state --state NEW -j ACCEPT
+[/code]
+Change the number(8, 3) in your case.
+the new rule table like this:
+[code lang="bash"]
+Chain INPUT (policy ACCEPT)
+num  target     prot opt source               destination
+1    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520
+2    ACCEPT     tcp  --  192.168.0.96/27      0.0.0.0/0          tcp dpt:81
+3    ACCEPT     icmp --  0.0.0.0/0            192.168.0.93       icmp type 8
+4    ACCEPT     all  --  192.168.0.96/27      0.0.0.0/0
+5    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+6    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:520
+7    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:68
+8    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state INVALID
+9    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state NEW
+Chain FORWARD (policy ACCEPT)
+num  target     prot opt source               destination
+1    PORT_FW    all  --  0.0.0.0/0            0.0.0.0/0
+2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+3    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state INVALID
+4    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state NEW
+Chain OUTPUT (policy ACCEPT)
+num  target     prot opt source               destination
+Chain PORT_FW (1 references)
+num  target     prot opt source               destination
+...
+</code>
+now, test the connection via ping or anything you like. :&ndash;)</p>
 
 <p>Special thanks to Masaki わふー.</p>
-
 ]]></content>
   </entry>
   

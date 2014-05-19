@@ -103,121 +103,130 @@ When you done the static routing table, you found the ip routing was &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Sometimes you may want add a static routing for accessing another network.<br />
-When you done the static routing table, you found the ip routing was working fine, but the connection can&#8217;t be established. The problem caused by firewall rule.</p>
+<div class="entry-content"><p>Sometimes you may want add a static routing for accessing another network.
+When you done the static routing table, you found the ip routing was working fine, but the connection can&rsquo;t be established. The problem caused by firewall rule.</p>
+
+<p>I made a new firmware based on 1.4.38, the iptables rule will load automatically. @2012.01.12
+download: <a href="http://www.axot.org/wp-content/uploads/2011/06/WNR854T_axot.img_.zip">WNR854T custom firmware</a></p>
+
+<p>Here I want show you how to fix the problem in the case of NetGear WNR854T.
+go to: <code>http://www.routerlogin.net/cmd.htm</code>
+then run: <code>iptables -L -n --line-numbers</code> for the print whole iptables rules.
+the result(possible):</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Chain INPUT <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>1    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520
+</span><span class='line'>2    ACCEPT     tcp  --  192.168.0.96/27      0.0.0.0/0          tcp dpt:81
+</span><span class='line'>3    ACCEPT     icmp --  0.0.0.0/0            192.168.0.93       icmp <span class="nb">type </span>8
+</span><span class='line'>4    ACCEPT     all  --  192.168.0.96/27      0.0.0.0/0
+</span><span class='line'>5    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+</span><span class='line'>6    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:520
+</span><span class='line'>7    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:68
+</span><span class='line'>8    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID
+</span><span class='line'>Chain FORWARD <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>1    PORT_FW    all  --  0.0.0.0/0            0.0.0.0/0
+</span><span class='line'>2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+</span><span class='line'>3    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID
+</span><span class='line'>Chain OUTPUT <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>Chain PORT_FW <span class="o">(</span>1 references<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><a id="more"></a><a id="more-6"></a></p>
+<p>In index 8 of Chain INPUT and index 3 of Chain FORWARD, New state will be dropped by.
+So, we need modify these rules
+like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>iptables -R INPUT 8 -i eth0 -m state --state INVALID -j DROP
+</span><span class='line'>iptables -R FORWARD 3 -i eth0 -m state --state INVALID -j DROP
+</span><span class='line'>iptables -A INPUT -i eth0 -m state --state NEW -j ACCEPT
+</span><span class='line'>iptables -A FORWARD -i eth0 -m state --state NEW -j ACCEPT
+</span><span class='line'><span class="o">[</span>/code<span class="o">]</span>
+</span><span class='line'>Change the number<span class="o">(</span>8, 3<span class="o">)</span> in your <span class="k">case</span>.
+</span><span class='line'>the new rule table like this:
+</span><span class='line'><span class="o">[</span>code <span class="nv">lang</span><span class="o">=</span><span class="s2">&quot;bash&quot;</span><span class="o">]</span>
+</span><span class='line'>Chain INPUT <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>1    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520
+</span><span class='line'>2    ACCEPT     tcp  --  192.168.0.96/27      0.0.0.0/0          tcp dpt:81
+</span><span class='line'>3    ACCEPT     icmp --  0.0.0.0/0            192.168.0.93       icmp <span class="nb">type </span>8
+</span><span class='line'>4    ACCEPT     all  --  192.168.0.96/27      0.0.0.0/0
+</span><span class='line'>5    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+</span><span class='line'>6    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:520
+</span><span class='line'>7    ACCEPT     udp  --  0.0.0.0/0            0.0.0.0/0          udp dpt:68
+</span><span class='line'>8    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state INVALID
+</span><span class='line'>9    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state NEW
+</span><span class='line'>Chain FORWARD <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>1    PORT_FW    all  --  0.0.0.0/0            0.0.0.0/0
+</span><span class='line'>2    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED
+</span><span class='line'>3    DROP       all  --  0.0.0.0/0            0.0.0.0/0          state INVALID
+</span><span class='line'>4    ACCEPT     all  --  0.0.0.0/0            0.0.0.0/0          state NEW
+</span><span class='line'>Chain OUTPUT <span class="o">(</span>policy ACCEPT<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>Chain PORT_FW <span class="o">(</span>1 references<span class="o">)</span>
+</span><span class='line'>num  target     prot opt <span class="nb">source               </span>destination
+</span><span class='line'>...
+</span></code></pre></td></tr></table></div></figure>
 
 
-<hr/>
-
-
-<h1>update1: I made a new firmware based on 1.4.38, the iptables rule will load automatically. @2012.01.12<br /></h1>
-
-<p><a href='http://www.axot.org/wp-content/uploads/2011/06/WNR854T_axot.img_.zip'>WNR854T custom firmware</a></p></p>
-
-<hr/>
-
-
-<p>Here I want show you how to fix the problem in the case of NetGear WNR854T.</p>
-
-
-<p>go to: http://www.routerlogin.net/cmd.htm<br />
-then run: &#8216;iptables -L -n &#8211;line-numbers&#8217; for the print whole iptables rules.</p>
-
-
-<p>the result(possible):</p>
-
-
-<p>[code lang=&#8221;bash&#8221;]<br />
-Chain INPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520<br />
-2    ACCEPT     tcp  &#8211;  192.168.0.96/27      0.0.0.0/0          tcp dpt:81<br />
-3    ACCEPT     icmp &#8211;  0.0.0.0/0            192.168.0.93       icmp type 8<br />
-4    ACCEPT     all  &#8211;  192.168.0.96/27      0.0.0.0/0<br />
-5    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-6    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:520<br />
-7    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:68<br />
-8    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID</p>
-
-
-<p>Chain FORWARD (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    PORT_FW    all  &#8211;  0.0.0.0/0            0.0.0.0/0<br />
-2    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-3    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW,INVALID</p>
-
-
-<p>Chain OUTPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination</p>
-
-
-<p>Chain PORT_FW (1 references)<br />
-num  target     prot opt source               destination<br />
-&#8230;<br />
-[/code]</p>
-
-
-<p>In index 8 of Chain INPUT and index 3 of Chain FORWARD, New state will be dropped by.<br />
-So, we need modify these rules</p>
-
-
-<p>like:</p>
-
-
-<p>[code lang=&#8221;bash&#8221;]<br />
-iptables -R INPUT 8 -i eth0 -m state &#8211;state INVALID -j DROP<br />
-iptables -R FORWARD 3 -i eth0 -m state &#8211;state INVALID -j DROP<br />
-iptables -A INPUT -i eth0 -m state &#8211;state NEW -j ACCEPT<br />
-iptables -A FORWARD -i eth0 -m state &#8211;state NEW -j ACCEPT<br />
-[/code]</p>
-
-
-<p>Change the number(8, 3) in your case.</p>
-
-
-<p>the new rule table like this:</p>
-
-
-<p>[code lang=&#8221;bash&#8221;]<br />
-Chain INPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp spt:520 dpt:520<br />
-2    ACCEPT     tcp  &#8211;  192.168.0.96/27      0.0.0.0/0          tcp dpt:81<br />
-3    ACCEPT     icmp &#8211;  0.0.0.0/0            192.168.0.93       icmp type 8<br />
-4    ACCEPT     all  &#8211;  192.168.0.96/27      0.0.0.0/0<br />
-5    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-6    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:520<br />
-7    ACCEPT     udp  &#8211;  0.0.0.0/0            0.0.0.0/0          udp dpt:68<br />
-8    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state INVALID<br />
-9    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW</p>
-
-
-<p>Chain FORWARD (policy ACCEPT)<br />
-num  target     prot opt source               destination<br />
-1    PORT_FW    all  &#8211;  0.0.0.0/0            0.0.0.0/0<br />
-2    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state RELATED,ESTABLISHED<br />
-3    DROP       all  &#8211;  0.0.0.0/0            0.0.0.0/0          state INVALID<br />
-4    ACCEPT     all  &#8211;  0.0.0.0/0            0.0.0.0/0          state NEW</p>
-
-
-<p>Chain OUTPUT (policy ACCEPT)<br />
-num  target     prot opt source               destination</p>
-
-
-<p>Chain PORT_FW (1 references)<br />
-num  target     prot opt source               destination<br />
-&#8230;<br />
-[/code]</p>
-
-
-<p>now, test the connection via ping or anything you like. :-)</p>
-
+<p>now, test the connection via ping or anything you like. :&ndash;)</p>
 
 <p>Special thanks to Masaki わふー.</p>
-
 </div>
 
 
