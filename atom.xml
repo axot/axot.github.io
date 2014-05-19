@@ -4,7 +4,7 @@
   <title><![CDATA[axot github page]]></title>
   <link href="https://axot.github.io/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:15:35+09:00</updated>
+  <updated>2014-05-20T01:20:38+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How to Resolve _rb_Digest_MD5_Finish Error in Ruby 1.9.x]]></title>
+    <title type="html"><![CDATA[How to resolve _rb_Digest_MD5_Finish error in Ruby 1.9.x]]></title>
     <link href="https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3/"/>
     <updated>2012-05-01T03:50:50+09:00</updated>
     <id>https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3</id>
@@ -80,7 +80,7 @@ rvm use 1.9.3<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[My Cydia Repo]]></title>
+    <title type="html"><![CDATA[My cydia repo]]></title>
     <link href="https://axot.github.io/blog/2012/02/10/cydia-repo/"/>
     <updated>2012-02-10T18:08:31+09:00</updated>
     <id>https://axot.github.io/blog/2012/02/10/cydia-repo</id>
@@ -112,7 +112,7 @@ SBSetting defaultのSSH toggleは起動する際にsshdを開くので、その�
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Can You Crack It Solution]]></title>
+    <title type="html"><![CDATA[Can you crack it solution]]></title>
     <link href="https://axot.github.io/blog/2011/12/05/can-you-crack-it-solution/"/>
     <updated>2011-12-05T09:22:36+09:00</updated>
     <id>https://axot.github.io/blog/2011/12/05/can-you-crack-it-solution</id>
@@ -2770,7 +2770,7 @@ http://pastebin.com/GAZ2aCLm<br />
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How to Pass Through New State packets[NetGear WNR854T]]]></title>
+    <title type="html"><![CDATA[How to pass through new state packets[NetGear WNR854T] ]]></title>
     <link href="https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t/"/>
     <updated>2011-06-27T17:27:35+09:00</updated>
     <id>https://axot.github.io/blog/2011/06/27/how-to-pass-through-new-state-packets-on-wan-interface-netgear-wnr854t</id>

@@ -4,6 +4,17 @@
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
+  
+  <!--
+    redirect users to the https version of the website.
+    but: only check when on the production domain, as set in _config.yml.
+   -->
+  <script type="text/javascript">
+    var enforce = "axot.github.io";
+    if ((enforce == window.location.host) && (window.location.protocol != "https:"))
+      window.location = window.location.toString().replace(/^http:/, "https:");
+  </script>
+  
   <meta charset="utf-8">
   <title>Category: Reverse Engineering - axot github page</title>
   <meta name="author" content="axot">
@@ -24,7 +35,6 @@
   <link href="/atom.xml" rel="alternate" title="axot github page" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans|Roboto:400,300' rel='stylesheet' type='text/css'>
 
@@ -32,8 +42,13 @@
 
 </head>
 
-<body   >
-  <header role="banner">
+
+<body>
+	<div class="container">
+		<aside class="left">
+			<div class="inner-left">
+				<header>
+					
   <img src="http://www.gravatar.com/avatar/377601481ee13583436af45bab0af0d0?s=200" alt="Gravatar of axot " title="Gravatar of axot" class="profilepic" />
 
 <hgroup>
@@ -43,28 +58,24 @@
    
 </hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:axot.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/blog">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div>
+				</header>
+				<footer>
+					<p>
+	
+		<a href="http://github.com/axot" class="btn btn-dark">GitHub</a>
+	
+	
+		<a href="http://twitter.com/axot" class="btn btn-dark">Twitter</a>
+	
+</p>
+				</footer>
+			</div>
+		</aside>
+    	<section class="right">
+    		<div class="inner-right">
+    			<div id="posts">
+    			  	<div>
 <article role="article">
   
   <header>
@@ -81,7 +92,7 @@
 
 <article>
   
-<h1><a href="/blog/2011/12/05/can-you-crack-it-solution/">Can You Crack It Solution</a></h1>
+<h1><a href="/blog/2011/12/05/can-you-crack-it-solution/">Can you crack it solution</a></h1>
 <time datetime="2011-12-05T09:22:36+09:00" pubdate><span class='month'>Dec</span> <span class='day'>05</span> <span class='year'>2011</span></time>
 
 <footer>
@@ -160,14 +171,15 @@
 </aside>
 
 
-    </div>
-  </div>
-  <footer role="contentinfo"><p class="credit">
+    			</div>
+    			<footer id="footer">
+    				<p class="credit">
   Copyright &copy; 2014 - axot. Powered by <a href="http://octopress.org">Octopress</a>
 </p>
 
-</footer>
-  
+
+    			</footer>
+    			
 
 <script type="text/javascript">
       var disqus_shortname = 'axot';
@@ -215,5 +227,8 @@
 
 
 
+    		</div>
+    	</section>
+  	</div>
 </body>
 </html>
