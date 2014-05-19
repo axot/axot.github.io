@@ -4,7 +4,7 @@
   <title><![CDATA[axot github page]]></title>
   <link href="https://axot.github.io/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:32:16+09:00</updated>
+  <updated>2014-05-20T01:37:07+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -18,14 +18,13 @@
     <link href="https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3/"/>
     <updated>2012-05-01T03:50:50+09:00</updated>
     <id>https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3</id>
-    <content type="html"><![CDATA[<p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a _rb_Digest_MD5_Finish error.<br />
-It seems only happend when you use RVM to manage rubies.<br />
-<a id="more"></a><a id="more-36"></a><br />
-The Makefile in each subdirectory of $HOME/.rvm/src/ruby-1.9.*/ext/digest need be patched.<br />
-I don&#8217;t know how to use RVM to install a custom Ruby version, so I made a simple shell script to do that.</p>
+    <content type="html"><![CDATA[<p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a _rb_Digest_MD5_Finish error.
+It seems only happend when you use RVM to manage rubies.</p>
 
+<p>The Makefile in each subdirectory of $HOME/.rvm/src/ruby-1.9.*/ext/digest need be patched.
+I don&rsquo;t know how to use RVM to install a custom Ruby version, so I made a simple shell script to do that.
+ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):</p>
 
-<p><p>ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):<br />
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -46,29 +45,31 @@ I don&#8217;t know how to use RVM to install a custom Ruby version, so I made a 
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh&lt;/p&gt;</span>
-</span><span class='line'>&lt;p&gt;cd <span class="nv">$HOME</span>/.rvm/src/ruby-1.9.<em>/ext/digest/sha1&lt;br /&gt;
-</span><span class='line'>sed -i -e <span class="s1">&#39;s/sha1init.c sha1ossl.c$/sha1init.c sha1ossl.c sha1.c/g; s/sha1init.o sha1ossl.o$/sha1init.o sha1ossl.o sha1.o/g&#39;</span> Makefile&lt;br /&gt;
-</span><span class='line'>make clean&lt;br /&gt;
-</span><span class='line'>make&lt;/p&gt;
-</span><span class='line'>&lt;p&gt;cd ../sha2&lt;br /&gt;
-</span><span class='line'>sed -i -e <span class="s1">&#39;s/sha2init.c sha2ossl.c$/sha2init.c sha2ossl.c sha2.c/g; s/sha2init.o sha2ossl.o$/sha2init.o sha2ossl.o sha2.o/g&#39;</span> Makefile&lt;br /&gt;
-</span><span class='line'>make clean&lt;br /&gt;
-</span><span class='line'>make&lt;/p&gt;
-</span><span class='line'>&lt;p&gt;cd ../md5&lt;br /&gt;
-</span><span class='line'>sed -i -e <span class="s1">&#39;s/md5init.c md5ossl.c$/md5init.c md5ossl.c md5.c/g; s/md5init.o md5ossl.o$/md5init.o md5ossl.o md5.o/g&#39;</span> Makefile&lt;br /&gt;
-</span><span class='line'>make clean&lt;br /&gt;
-</span><span class='line'>make&lt;/p&gt;
-</span><span class='line'>&lt;p&gt;cd ../rmd160&lt;br /&gt;
-</span><span class='line'>sed -i -e <span class="s1">&#39;s/rmd160init.c rmd160ossl.c$/rmd160init.c rmd160ossl.c rmd160.c/g; s/rmd160init.o rmd160ossl.o$/rmd160init.o rmd160ossl.o rmd160.o/g&#39;</span> Makefile&lt;br /&gt;
-</span><span class='line'>make clean&lt;br /&gt;
-</span><span class='line'>make&lt;/p&gt;
-</span><span class='line'>&lt;p&gt;echo Patching&hellip;&lt;br /&gt;
-</span><span class='line'>cp ../../../.ext/x86_64-darwin</em>/digest/<em>.bundle ../../../../../rubies/ruby-1.9.</em>/lib/ruby/1.9.<em>/x86_64-darwin</em>/digest/&lt;br /&gt;
-</span><span class='line'><span class="nb">echo </span>Done&lt;br /&gt;
-</span></code></pre></td></tr></table></div></figure></p>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'>sed -i -e <span class="s1">&#39;s/sha1init.c sha1ossl.c$/sha1init.c sha1ossl.c sha1.c/g; s/sha1init.o sha1ossl.o$/sha1init.o sha1ossl.o sha1.o/g&#39;</span> Makefile
+</span><span class='line'>make clean
+</span><span class='line'>make
+</span><span class='line'>
+</span><span class='line'>sed -i -e <span class="s1">&#39;s/sha2init.c sha2ossl.c$/sha2init.c sha2ossl.c sha2.c/g; s/sha2init.o sha2ossl.o$/sha2init.o sha2ossl.o sha2.o/g&#39;</span> Makefile
+</span><span class='line'>make clean
+</span><span class='line'>make
+</span><span class='line'>
+</span><span class='line'>sed -i -e <span class="s1">&#39;s/md5init.c md5ossl.c$/md5init.c md5ossl.c md5.c/g; s/md5init.o md5ossl.o$/md5init.o md5ossl.o md5.o/g&#39;</span> Makefile
+</span><span class='line'>make clean
+</span><span class='line'>make
+</span><span class='line'>
+</span><span class='line'>sed -i -e <span class="s1">&#39;s/rmd160init.c rmd160ossl.c$/rmd160init.c rmd160ossl.c rmd160.c/g; s/rmd160init.o rmd160ossl.o$/rmd160init.o rmd160ossl.o rmd160.o/g&#39;</span> Makefile
+</span><span class='line'>make clean
+</span><span class='line'>make
+</span><span class='line'>
+</span><span class='line'>cp ../../../.ext/x86_64-darwin*/digest/*.bundle ../../../../../rubies/ruby-1.9.*/lib/ruby/1.9.*/x86_64-darwin*/digest/
+</span><span class='line'><span class="nb">echo </span>Done
+</span></code></pre></td></tr></table></div></figure>
 
-<p><p>Usage example:<br />
+
+<p>Usage example:</p>
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -77,18 +78,19 @@ I don&#8217;t know how to use RVM to install a custom Ruby version, so I made a 
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm cleanup all&lt;br /&gt;
-</span><span class='line'>rvm reinstall 1.9.3&lt;br /&gt;
-</span><span class='line'>rvm reload&lt;br /&gt;
-</span><span class='line'>curl -L <a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a> | sh&lt;br /&gt;
-</span><span class='line'>rvm use 1.9.3&lt;br /&gt;
-</span><span class='line'><span class="c"># test something whatever u want to&lt;br /&gt;</span>
-</span><span class='line'><span class="c"># for metasploit:&lt;br /&gt;</span>
-</span><span class='line'><span class="c"># msfrpcd -P password -U username&lt;br /&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>rvm cleanup all
+</span><span class='line'>rvm reinstall 1.9.3
+</span><span class='line'>rvm reload
+</span><span class='line'>curl -L http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh | sh
+</span><span class='line'>rvm use 1.9.3
+</span><span class='line'><span class="c"># test something whatever u want to</span>
+</span><span class='line'><span class="c"># for metasploit:</span>
+</span><span class='line'><span class="c"># msfrpcd -P password -U username</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p><p>Downloads:<br />
-<a href='http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh'>ruby1.9.x_patch</a></p></p>
+
+<p>Downloads:
+ruby1.9.x_patch</p>
 ]]></content>
   </entry>
   

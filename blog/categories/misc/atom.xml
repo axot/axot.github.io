@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Misc | axot github page]]></title>
   <link href="https://axot.github.io/blog/categories/misc/atom.xml" rel="self"/>
   <link href="https://axot.github.io/"/>
-  <updated>2014-05-20T01:32:16+09:00</updated>
+  <updated>2014-05-20T01:37:07+09:00</updated>
   <id>https://axot.github.io/</id>
   <author>
     <name><![CDATA[axot]]></name>
@@ -18,65 +18,54 @@
     <link href="https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3/"/>
     <updated>2012-05-01T03:50:50+09:00</updated>
     <id>https://axot.github.io/blog/2012/05/01/how-to-resolve-_rb_digest_md5_finish-error-in-ruby-1-9-3</id>
-    <content type="html"><![CDATA[<p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a _rb_Digest_MD5_Finish error.<br />
-It seems only happend when you use RVM to manage rubies.<br />
-<a id="more"></a><a id="more-36"></a><br />
-The Makefile in each subdirectory of $HOME/.rvm/src/ruby-1.9.*/ext/digest need be patched.<br />
-I don't know how to use RVM to install a custom Ruby version, so I made a simple shell script to do that.</p>
+    <content type="html"><![CDATA[<p>When I am setting up Metasploit for Mac OSX, ruby 1.9.3 throw out a _rb_Digest_MD5_Finish error.
+It seems only happend when you use RVM to manage rubies.</p>
 
+<p>The Makefile in each subdirectory of $HOME/.rvm/src/ruby-1.9.*/ext/digest need be patched.
+I don&rsquo;t know how to use RVM to install a custom Ruby version, so I made a simple shell script to do that.
+ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):
+``` bash</p>
 
-<p>ruby1.9.x_patch.sh(test passed on OSX 10.7.3 x86_64 version):<br />
-``` bash
-#!/bin/sh</p>
+<h1>!/bin/sh</h1>
 
-
-<p>cd $HOME/.rvm/src/ruby-1.9.*/ext/digest/sha1<br />
-sed -i -e 's/sha1init.c sha1ossl.c$/sha1init.c sha1ossl.c sha1.c/g; s/sha1init.o sha1ossl.o$/sha1init.o sha1ossl.o sha1.o/g' Makefile<br />
-make clean<br />
+<p>sed -i -e &rsquo;s/sha1init.c sha1ossl.c$/sha1init.c sha1ossl.c sha1.c/g; s/sha1init.o sha1ossl.o$/sha1init.o sha1ossl.o sha1.o/g' Makefile
+make clean
 make</p>
 
-
-<p>cd ../sha2<br />
-sed -i -e 's/sha2init.c sha2ossl.c$/sha2init.c sha2ossl.c sha2.c/g; s/sha2init.o sha2ossl.o$/sha2init.o sha2ossl.o sha2.o/g' Makefile<br />
-make clean<br />
+<p>sed -i -e &rsquo;s/sha2init.c sha2ossl.c$/sha2init.c sha2ossl.c sha2.c/g; s/sha2init.o sha2ossl.o$/sha2init.o sha2ossl.o sha2.o/g' Makefile
+make clean
 make</p>
 
-
-<p>cd ../md5<br />
-sed -i -e 's/md5init.c md5ossl.c$/md5init.c md5ossl.c md5.c/g; s/md5init.o md5ossl.o$/md5init.o md5ossl.o md5.o/g' Makefile<br />
-make clean<br />
+<p>sed -i -e &rsquo;s/md5init.c md5ossl.c$/md5init.c md5ossl.c md5.c/g; s/md5init.o md5ossl.o$/md5init.o md5ossl.o md5.o/g' Makefile
+make clean
 make</p>
 
-
-<p>cd ../rmd160<br />
-sed -i -e 's/rmd160init.c rmd160ossl.c$/rmd160init.c rmd160ossl.c rmd160.c/g; s/rmd160init.o rmd160ossl.o$/rmd160init.o rmd160ossl.o rmd160.o/g' Makefile<br />
-make clean<br />
+<p>sed -i -e &rsquo;s/rmd160init.c rmd160ossl.c$/rmd160init.c rmd160ossl.c rmd160.c/g; s/rmd160init.o rmd160ossl.o$/rmd160init.o rmd160ossl.o rmd160.o/g' Makefile
+make clean
 make</p>
 
-
-<p><p>echo Patching&hellip;<br />
-cp ../../../.ext/x86_64-darwin<em>/digest/</em>.bundle ../../../../../rubies/ruby-1.9.<em>/lib/ruby/1.9.</em>/x86_64-darwin*/digest/<br />
-echo Done<br />
+<p>cp ../../../.ext/x86_64-darwin<em>/digest/</em>.bundle ../../../../../rubies/ruby-1.9.<em>/lib/ruby/1.9.</em>/x86_64-darwin*/digest/
+echo Done
 ```</p>
 
-<p><p>Usage example:<br />
+<p>Usage example:
 ``` bash
-rvm cleanup all<br />
-rvm reinstall 1.9.3<br />
-rvm reload<br />
-curl -L <a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a> | sh<br />
-rvm use 1.9.3<br /></p>
+rvm cleanup all
+rvm reinstall 1.9.3
+rvm reload
+curl -L <a href="http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh">http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh</a> | sh
+rvm use 1.9.3</p>
 
-<h1>test something whatever u want to<br /></h1>
+<h1>test something whatever u want to</h1>
 
-<h1>for metasploit:<br /></h1>
+<h1>for metasploit:</h1>
 
-<h1>msfrpcd -P password -U username<br /></h1>
+<h1>msfrpcd -P password -U username</h1>
 
 <p>```</p>
 
-<p><p>Downloads:<br />
-<a href='http://www.axot.org/wp-content/uploads/2012/05/ruby1.9.x_patch.sh'>ruby1.9.x_patch</a></p></p>
+<p>Downloads:
+ruby1.9.x_patch</p>
 ]]></content>
   </entry>
   
