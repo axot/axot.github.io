@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { loadPosts, renderArticle } from '../lib/content.mjs';
 
@@ -14,18 +16,32 @@ test('loads the original articles in date order and preserves all permalinks', (
   assert.equal(posts[0].displayDate, 'May 1, 2012');
 });
 
-test('turns WordPress shortcodes into readable code and language sections', () => {
+test('renders the rewritten English challenge with all three stages', () => {
   const challenge = posts.find(post => post.slug === 'can-you-crack-it-solution');
-  assert.equal(challenge.languages.length, 3);
-  assert.equal(challenge.languages[1].lang, 'zh-Hans');
-  assert.equal(challenge.languages[2].lang, 'ja');
+  assert.deepEqual(challenge.languages, []);
+  assert.equal(challenge.originalTitle, 'Can You Crack It? A Step-by-Step Solution');
+  assert.match(challenge.html, /GCHQ’s 2011/);
+  assert.match(challenge.html, /<h2>Part 1: From pixels to machine code<\/h2>/);
+  assert.match(challenge.html, /<h2>Part 2: Building a virtual machine<\/h2>/);
+  assert.match(challenge.html, /<h2>Part 3: Reconstructing the license<\/h2>/);
+  assert.doesNotMatch(challenge.html, /id="(?:chinese|japanese)"|lang="(?:zh-Hans|ja)"|简体中文|日本語/);
   assert.match(challenge.html, /<pre><code class="language-c">/);
   assert.match(challenge.html.replace(/<[^>]+>/g, ''), /#include &lt;stdio\.h&gt;/);
   assert.match(challenge.html.replace(/<[^>]+>/g, ''), /pIns-&gt;opcode/);
   assert.doesNotMatch(challenge.html, /\[(?:\/?code|\/?tab|\/?tabs|\/?frame)\b/);
   assert.doesNotMatch(challenge.html, /<img[^>]*src="http:/);
-  assert.match(challenge.html, /Historical image/);
+  assert.match(challenge.html, /href="http:\/\/www\.axot\.org\/wp-content\/uploads\/2011\/12\/cyber\.png"/);
   assert.equal(challenge.bytes.length, 160);
+});
+
+test('preserves the original challenge code, commands, and output listings', () => {
+  const source = readFileSync(new URL('../source/_posts/2011-12-05-can-you-crack-it-solution.markdown', import.meta.url), 'utf8');
+  assert.doesNotMatch(source.split('\n---\n')[1], /\[\/?(?:code|frame|tabs?)\b|<br\s*\/?>|<\/?p\b/);
+  const blocks = [...source.matchAll(/^```[^\n]*\n([\s\S]*?)^```/gm)].map(match => match[1].trim());
+  assert.equal(blocks.length, 20);
+  const preserved = [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 17, 18, 19].map(index => blocks[index]);
+  assert.equal(createHash('sha256').update(preserved.join('\0')).digest('hex'),
+    '79e1d330f6ea5289f0a00007343685ff671acd222a591b273f43c1ab8e07b260');
 });
 
 test('repairs the mixed Markdown and WordPress fences in the network article', () => {
@@ -44,7 +60,7 @@ test('highlights fenced code while preserving escaped code text', () => {
   assert.doesNotMatch(html, /a < b/);
 });
 
-test('highlights legacy C, JavaScript, shell, and assembly examples at build time', () => {
+test('highlights C, JavaScript, shell, and assembly examples at build time', () => {
   const challenge = posts.find(post => post.slug === 'can-you-crack-it-solution');
   assert.match(challenge.html, /class="hljs-keyword"/);
   assert.match(challenge.html, /class="hljs-string"/);

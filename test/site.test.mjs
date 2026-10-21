@@ -56,6 +56,13 @@ test('the feed includes each original article and valid XML escaping', () => {
   assert.doesNotMatch(feed, /&(?!amp;|lt;|gt;|quot;|apos;)/);
 });
 
+test('the challenge page has no translated versions or language switcher', () => {
+  const html = readFileSync(new URL('blog/2011/12/05/can-you-crack-it-solution/index.html', output), 'utf8');
+  assert.doesNotMatch(html, /class="language-nav"|id="(?:chinese|japanese)"|lang="(?:zh-Hans|ja)"|简体中文|日本語/);
+  assert.match(html, /Can You Crack It\? A Step-by-Step Solution/);
+  assert.match(html, /class="hljs-keyword"/);
+});
+
 test('homepage content is readable without client-side JavaScript', () => {
   const homepage = readFileSync(new URL('index.html', output), 'utf8');
   assert.equal((homepage.match(/class="post-row"/g) || []).length, 3);

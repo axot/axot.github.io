@@ -92,7 +92,7 @@ tags:
 ---
 ```
 
-Then write standard Markdown with fenced code blocks. Add a language after the opening fence, such as `bash`, `c`, `js`, or `asm`, to enable syntax highlighting. Highlight.js runs only during the build; light/dark syntax colors are controlled by the `--syntax-*` tokens in `site/assets/site.css`. Plain-text and unknown language blocks remain safely escaped. The content adapter supports the three historical imports without changing their source files. Their existing `/blog/year/month/day/slug/` URLs remain the same.
+Then write standard Markdown with fenced code blocks. Add a language after the opening fence, such as `bash`, `c`, `js`, or `asm`, to enable syntax highlighting. Highlight.js runs only during the build; light/dark syntax colors are controlled by the `--syntax-*` tokens in `site/assets/site.css`. Plain-text and unknown language blocks remain safely escaped. The content adapter supports the three historical imports and preserves their existing `/blog/year/month/day/slug/` URLs. The “Can you crack it?” write-up now retains only its English version, rewritten in natural English and standard Markdown. Its Chinese and Japanese versions have been removed from the source; the original technical source-code, command, and output listings are preserved.
 
 Homepage-friendly titles and summaries for the historical posts live in the `summaries` object in `lib/content.mjs`. Article pages retain the original full titles.
 
@@ -102,7 +102,7 @@ The site previously used Octopress 2, with dependencies dating to Ruby 1.9 and J
 
 The live HTTPS website requested its Google Fonts stylesheets over HTTP, which modern browsers block as mixed content. The theme also relied on absolutely positioned left/right panels and a nested scrolling area, and referenced retired integrations such as Google Plus.
 
-The articles were imported from WordPress and still contained `[code]`, `[frame]`, and multilingual `[tabs]` shortcodes, binary-encoded YAML dates, and a mixed Markdown/shortcode fence in the networking article. The current content adapter repairs those at build time, keeps all three language versions readable, and does not publish imported commenter identities.
+The articles were imported from WordPress and still contained `[code]`, `[frame]`, and multilingual `[tabs]` shortcodes, binary-encoded YAML dates, and a mixed Markdown/shortcode fence in the networking article. The current content adapter repairs the remaining legacy formatting at build time and does not publish imported commenter identities. The challenge write-up’s translated versions and language-tab wrappers have since been removed; only the English write-up is published.
 
 Historical images hosted on `www.axot.org` are **not** present in this repository. They are represented as labeled links to their original sources rather than loaded as broken or mixed-content images. Historical external downloads and links are preserved, not verified or silently replaced. Every article warns that its commands and software versions are historical.
 
@@ -110,7 +110,7 @@ Historical images hosted on `www.axot.org` are **not** present in this repositor
 
 The old Sass themes, Ruby plugins and dependencies, HTML/Liquid templates, JavaScript widgets, Flash player, theme images, Travis configuration, and Rake deployment scripts have been deleted. Eleventy is the only site generator.
 
-`source/` now contains only `source/_posts/`: the three original article files, preserved byte-for-byte. This is authored content, not an Octopress dependency. The adapter in `lib/content.mjs` reads those files directly and still supports their historical WordPress formatting.
+`source/` now contains only `source/_posts/`: the three historical article files. They were preserved during Octopress removal; the challenge article was subsequently shortened to its English version and its prose rewritten in standard Markdown. This is authored content, not an Octopress dependency. The adapter in `lib/content.mjs` reads those files directly and still supports their historical WordPress formatting.
 
 The original Octopress MIT notice is retained in `THIRD_PARTY_NOTICES.md`. The removed code remains available in Git history; it is not required for building, previewing, or deploying the current site.
 
@@ -130,6 +130,6 @@ No Pages settings, remote branches, or deployments were changed during local dev
 
 ## Verification
 
-`npm run check` verifies the original article URLs and dates, multilingual shortcode conversion, repaired code fences, exclusion of imported commenter identities, generated local links/assets, one primary heading and skip navigation per page, local font references, RSS entries, and content availability without JavaScript.
+`npm run check` verifies the original article URLs and dates, the English-only challenge write-up without a language switcher, legacy shortcode conversion, repaired code fences, exclusion of imported commenter identities, generated local links/assets, one primary heading and skip navigation per page, local font references, RSS entries, and content availability without JavaScript.
 
 Browser verification covers the desktop and narrow-screen homepage, theme control, archive topic filtering, and article navigation. Tests do not claim that the 2011–2012 external resources still exist.
