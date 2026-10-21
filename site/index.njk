@@ -1,0 +1,27 @@
+---
+layout: base.njk
+---
+<section class="hero wrap" aria-labelledby="intro-title">
+  <div class="hero-copy">
+    <p class="intro-line"><span class="intro-mark" aria-hidden="true"></span>Hi, I’m axot.</p>
+    <h1 id="intro-title">Notes from<br>under the hood.</h1>
+    <p class="hero-description">Taking things apart. Finding out why.<br>A personal notebook on reverse engineering,<br class="desktop-break"> networks, and the software in between.</p>
+    <a class="primary-link" href="#writing">Explore the notebook <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></svg></a>
+  </div>
+  {% include 'byte-map.njk' %}
+</section>
+<section class="featured-section wrap" aria-labelledby="featured-title">
+  <a class="featured-note" href="{{ featured.url }}">
+    <div class="featured-intro"><span class="featured-label">From the archive</span><span class="feature-topic">Reverse<br>engineering</span><span class="feature-year">2011</span></div>
+    <div class="featured-copy"><h2 id="featured-title">Can you crack it?</h2><p>A few bytes became machine code. The machine code became a virtual machine. Here’s how the GCHQ puzzle came apart.</p><span class="feature-read">Read the walkthrough <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span></div>
+    <div class="featured-glyph" aria-hidden="true">{<span>?</span>}</div>
+  </a>
+</section>
+<section class="writing-section wrap" id="writing" aria-labelledby="writing-title">
+  <div class="section-heading"><div><h2 id="writing-title">The notebook</h2><p>Older notes. Still worth keeping.</p></div><a class="text-link" href="/blog/archives/">Browse the archive <span aria-hidden="true">↗</span></a></div>
+  {% include 'post-list.njk' %}
+</section>
+<section class="about-section wrap" id="about" aria-labelledby="about-title">
+  <div><span class="about-symbol" aria-hidden="true">*</span><h2 id="about-title">Curiosity, documented.</h2></div>
+  <div class="about-copy"><p>This is where I keep the things I learn by looking a little closer: a stubborn build, an unexpected packet, a puzzle hiding in plain sight.</p><p>These articles are snapshots from 2011 and 2012, preserved with their original dates and URLs. The code on GitHub is another part of the notebook.</p><a class="text-link" href="{{ site.github }}">Find me on GitHub <span aria-hidden="true">↗</span></a></div>
+</section>

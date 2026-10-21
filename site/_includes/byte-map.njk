@@ -1,0 +1,7 @@
+<figure class="byte-figure">
+  <div class="byte-legend"><span>Raw bytes, closer look</span><span>0x00–0x9f</span></div>
+  <div class="byte-grid" aria-hidden="true">
+    {% for byte in featured.bytes %}<span class="byte tone-{{ byte.tone }}">{{ byte.value }}</span>{% endfor %}
+  </div>
+  <figcaption><span class="byte-cursor" aria-hidden="true"></span>160 bytes. A whole rabbit hole.</figcaption>
+</figure>

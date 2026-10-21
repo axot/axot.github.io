@@ -1,0 +1,15 @@
+---
+layout: base.njk
+pagination:
+  data: topics
+  size: 1
+  alias: topic
+permalink: "/blog/categories/{{ topic.slug }}/"
+eleventyComputed:
+  title: "{{ topic.name }}"
+---
+<section class="archive-page wrap" aria-labelledby="category-title">
+  <header class="archive-header"><a class="text-link" href="/blog/archives/">All writing</a><h1 id="category-title">{{ topic.name }}</h1></header>
+  {% set posts = topic.posts %}
+  {% include 'post-list.njk' %}
+</section>

@@ -1,0 +1,11 @@
+---
+layout: base.njk
+title: The writing archive
+permalink: /blog/archives/
+---
+<section class="archive-page wrap" aria-labelledby="archive-title">
+  <header class="archive-header"><p class="intro-line">The complete notebook</p><h1 id="archive-title">Small discoveries.<br>Kept for later.</h1><p>Reverse engineering, network troubleshooting, and notes from the software workbench. {{ posts.length }} articles, dating back to 2011.</p></header>
+  <div class="archive-filters" role="group" aria-label="Filter articles by topic" hidden><button type="button" data-filter="all" aria-pressed="true">All notes</button>{% for topic in topics %}<button type="button" data-filter="{{ topic.slug }}" aria-pressed="false">{{ topic.name }}</button>{% endfor %}</div>
+  <p class="filter-status sr-only" role="status" aria-live="polite"></p>
+  {% include 'post-list.njk' %}
+</section>
